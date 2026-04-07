@@ -18,7 +18,7 @@ const Register = () => {
             return;
         }
         try {
-            await axios.post('http://localhost:5000/auth/register', form);
+            await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, form);
             setSuccess('Registered successfully! Redirecting...');
             setTimeout(() => navigate('/login'), 1500);
         } catch (err) {
@@ -35,7 +35,7 @@ const Register = () => {
                 <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
                     <TextField fullWidth label="Name" name="name" value={form.name} onChange={handleChange} margin="normal" />
                     <TextField fullWidth label="Email" name="email" value={form.email} onChange={handleChange} margin="normal" />
-                    <TextField fullWidth label="Password" name="password" type="password" value={form.password} onChange={handleChange} margin="normal" />
+                    <TextField fullWidth label="Password" name="password" type="password" autoComplete="new-password" value={form.password} onChange={handleChange} margin="normal" />
                     <Button fullWidth variant="contained" type="submit" sx={{ mt: 2 }}>Register</Button>
                 </form>
                 <Typography sx={{ mt: 2 }}>Already have an account? <Link to="/login">Login</Link></Typography>

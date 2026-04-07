@@ -21,6 +21,7 @@ const Dashboard = () => {
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');
+    const API = import.meta.env.VITE_API_URL;
     const authHeader = { headers: { Authorization: `Bearer ${token}` } };
 
     useEffect(() => { getTask(); }, []);
@@ -28,7 +29,7 @@ const Dashboard = () => {
     const getTask = async () => {
         setFetchLoading(true);
         try {
-            const res = await axios.get('http://localhost:5000/tasks/gettask', authHeader);
+            const res = await axios.get(`${API}/tasks/gettask`, authHeader);
             setTaskArray(res.data || []);
         } catch (err) {
             setError('Failed to fetch tasks. Check if server is running.');
@@ -41,7 +42,7 @@ const Dashboard = () => {
         if (!task.trim()) { setError('Please enter a task'); setTimeout(() => setError(''), 3000); return; }
         setLoading(true);
         try {
-            await axios.post('http://localhost:5000/tasks/addtask', { task: task.trim() }, authHeader);
+            await axios.post(`${API}/tasks/addtask`, { task: task.trim() }, authHeader);
             setTask('');
             setStatus(true);
             getTask();
@@ -56,7 +57,7 @@ const Dashboard = () => {
 
     const updateStatus = async (id, newStatus) => {
         try {
-            await axios.put(`http://localhost:5000/tasks/updatetask/${id}`, { status: newStatus }, authHeader);
+            await axios.put(`${API}/tasks/updatetask/${id}`, { status: newStatus }, authHeader);
             getTask();
         } catch (err) {
             setError('Failed to update task');
@@ -65,7 +66,7 @@ const Dashboard = () => {
 
     const deleteTask = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/tasks/deletetask/${id}`, authHeader);
+            await axios.delete(`${API}/tasks/deletetask/${id}`, authHeader);
             getTask();
         } catch (err) {
             setError('Failed to delete task');

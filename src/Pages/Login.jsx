@@ -17,7 +17,7 @@ const Login = () => {
             return;
         }
         try {
-            const res = await axios.post('http://localhost:5000/auth/login', form);
+            const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, form);
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('user', JSON.stringify(res.data.user));
             navigate('/dashboard');
@@ -33,7 +33,7 @@ const Login = () => {
                 {error && <Alert severity="error" onClose={() => setError('')}>{error}</Alert>}
                 <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
                     <TextField fullWidth label="Email" name="email" value={form.email} onChange={handleChange} margin="normal" />
-                    <TextField fullWidth label="Password" name="password" type="password" value={form.password} onChange={handleChange} margin="normal" />
+                    <TextField fullWidth label="Password" name="password" type="password" autoComplete="current-password" value={form.password} onChange={handleChange} margin="normal" />
                     <Button fullWidth variant="contained" type="submit" sx={{ mt: 2 }}>Login</Button>
                 </form>
                 <Typography sx={{ mt: 2 }}>Don't have an account? <Link to="/register">Register</Link></Typography>
