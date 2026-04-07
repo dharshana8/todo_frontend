@@ -32,7 +32,7 @@ const Login = () => {
                 <Typography variant="h4" gutterBottom>Login</Typography>
                 {error && <Alert severity="error" onClose={() => setError('')}>{error}</Alert>}
                 <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-                    <TextField fullWidth label="Email" name="email" value={form.email} onChange={handleChange} margin="normal" />
+                    <TextField fullWidth label="Email" name="email" autoComplete="email" value={form.email} onChange={handleChange} margin="normal" />
                     <TextField fullWidth label="Password" name="password" type="password" autoComplete="current-password" value={form.password} onChange={handleChange} margin="normal" />
                     <Button fullWidth variant="contained" type="submit" sx={{ mt: 2 }}>Login</Button>
                 </form>

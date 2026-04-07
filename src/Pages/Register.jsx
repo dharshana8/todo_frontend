@@ -33,8 +33,8 @@ const Register = () => {
                 {error && <Alert severity="error" onClose={() => setError('')}>{error}</Alert>}
                 {success && <Alert severity="success">{success}</Alert>}
                 <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-                    <TextField fullWidth label="Name" name="name" value={form.name} onChange={handleChange} margin="normal" />
-                    <TextField fullWidth label="Email" name="email" value={form.email} onChange={handleChange} margin="normal" />
+                    <TextField fullWidth label="Name" name="name" autoComplete="name" value={form.name} onChange={handleChange} margin="normal" />
+                    <TextField fullWidth label="Email" name="email" autoComplete="email" value={form.email} onChange={handleChange} margin="normal" />
                     <TextField fullWidth label="Password" name="password" type="password" autoComplete="new-password" value={form.password} onChange={handleChange} margin="normal" />
                     <Button fullWidth variant="contained" type="submit" sx={{ mt: 2 }}>Register</Button>
                 </form>
