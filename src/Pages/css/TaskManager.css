@@ -1,0 +1,31 @@
+                                                                                                                                                                                                                                                       .tasklist {
+    margin: auto;
+    display: flex;
+    flex-direction: column;  
+    height: 100vh;
+    background-color: #a4e7dc;
+    justify-content: flex-start; 
+    align-items: center;       
+    padding-top: 60px;          
+}
+
+.taskList h1 {
+    color: black;
+    font-size: 3rem;
+    margin-bottom: 40px;      
+}
+
+.box {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    flex-direction:row;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.button{
+    width: 120px;
+    
+}
